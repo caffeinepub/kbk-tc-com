@@ -1,0 +1,226 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-multi-step-single-page-website-flow-with-these-sections-in-order-1-landing-page-2-yes-no-quiz-6-7-questions-3-mini-game-intro-with-character-4-15-second-tapping-mini-game-50-taps-goal-5-final-heart-button-reveal-with-the-full-anniversary-message",
+      "featureTitle": "Create a multi-step single-page website flow with these sections in order: (1) Landing page, (2) Yes/No quiz (6–7 questions), (3) Mini-game intro with character, (4) 15-second tapping mini-game (50 taps goal), (5) Final heart button reveal with the full anniversary message.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/steps/FinalMessageStep.tsx",
+        "frontend/src/steps/GameIntroStep.tsx",
+        "frontend/src/steps/LandingStep.tsx",
+        "frontend/src/steps/QuizStep.tsx",
+        "frontend/src/steps/TappingGameStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-landing-page-with-a-heading-text-exactly-for-my-love-of-my-life-khambor-b-kharjana-b-display-the-uploaded-couple-image-img-20250222-wa0001-jpg-c-show-this-exact-text-below-the-image-i-love-you-and-will-always-love-you-please-click-this-heart-button-so-that-you-can-answer-some-questions-and-d-a-heart-shaped-button-to-begin-the-quiz",
+      "featureTitle": "Implement the Landing page with: (a) heading text exactly: \"For my Love of my life Khambor B Kharjana\", (b) display the uploaded couple image (IMG-20250222-WA0001.jpg), (c) show this exact text below the image: \"I love you and will always Love you please click this heart button so that you can answer some questions\", and (d) a heart-shaped button to begin the quiz.",
+      "files": [
+        "frontend/src/components/HeartButton.tsx",
+        "frontend/src/steps/LandingStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-yes-no-quiz-containing-6-7-total-questions-presented-one-at-a-time-with-two-buttons-yes-and-no-the-first-two-questions-and-their-responses-must-exactly-match-the-user-provided-text-after-each-answer-show-the-corresponding-response-message-and-allow-proceeding-to-the-next-question",
+      "featureTitle": "Build a Yes/No quiz containing 6–7 total questions, presented one at a time with two buttons: \"Yes\" and \"No\". The first two questions and their responses must exactly match the user-provided text. After each answer, show the corresponding response message and allow proceeding to the next question.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/YesNoButtons.tsx",
+        "frontend/src/steps/QuizStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-after-the-quiz-add-a-game-button-that-reveals-an-animated-cute-chibi-dinosaur-character-holding-a-heart-display-the-character-intro-dialogue-as-text-exactly-hi-my-name-is-luna-as-you-know-me-hehehe-so-in-this-game-u-have-tap-50-times-in-15-second-if-you-can-do-that-you-ll-get-this-heart-that-i-m-holding-if-you-can-t-i-ll-cry-and-provide-a-button-to-start-the-game",
+      "featureTitle": "After the quiz, add a \"Game\" button that reveals an animated, cute chibi dinosaur character holding a heart. Display the character intro dialogue as text exactly: \"Hi my name is Luna as you know me hehehe so in this game u have tap 50 times in 15 second if you can do that you'll get this heart that I'm holding if you can't I'll cry\" and provide a button to start the game.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/steps/GameIntroStep.tsx",
+        "frontend/src/steps/TappingGameStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-tapping-mini-game-user-must-register-50-taps-within-15-seconds-the-tapping-area-must-support-multi-finger-input-i-e-multiple-rapid-taps-on-touchscreens-show-a-visible-countdown-timer-tap-counter-and-clear-success-failure-result-when-time-ends-or-goal-is-reached",
+      "featureTitle": "Implement the tapping mini-game: user must register 50 taps within 15 seconds. The tapping area must support multi-finger input (i.e., multiple rapid taps on touchscreens). Show a visible countdown timer, tap counter, and clear success/failure result when time ends or goal is reached.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useTappingGame.ts",
+        "frontend/src/steps/TappingGameStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-during-the-tapping-game-on-each-tap-show-a-short-floating-feedback-message-chosen-from-a-pool-that-includes-at-least-these-exact-strings-i-u-you-can-do-it-you-almost-there-you-did-well-proud-of-you-add-cute-visual-effects-e-g-small-sparkles-heart-pop-and-a-cherry-blossom-petal-overlay-animation-across-the-screen-while-the-game-is-active",
+      "featureTitle": "During the tapping game, on each tap, show a short floating feedback message chosen from a pool that includes at least these exact strings: \"i ❤️ u\", \"you can do it\", \"you almost there\", \"you did well\", \"proud of you\". Add cute visual effects (e.g., small sparkles/heart pop) and a cherry-blossom petal overlay animation across the screen while the game is active.",
+      "files": [
+        "frontend/src/components/FloatingTapFeedback.tsx",
+        "frontend/src/components/PetalOverlay.tsx",
+        "frontend/src/index.css",
+        "frontend/src/steps/TappingGameStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-after-the-game-ends-show-a-heart-button-that-reveals-the-full-anniversary-message-the-revealed-content-must-exactly-match-the-user-provided-text-starting-with-happy-21-month-anniversary-my-love-and-including-the-full-multi-paragraph-message-as-provided",
+      "featureTitle": "After the game ends, show a heart button that reveals the full anniversary message. The revealed content must exactly match the user-provided text starting with: \"Happy 21❤️ Month Anniversary, my love 🤍\" and including the full multi-paragraph message as provided.",
+      "files": [
+        "frontend/src/components/HeartButton.tsx",
+        "frontend/src/steps/FinalMessageStep.tsx",
+        "frontend/src/steps/TappingGameStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-branding-text-across-the-site-so-any-credit-reading-created-by-caffeine-ai-is-replaced-with-the-exact-text-created-by-luna",
+      "featureTitle": "Update branding text across the site so any credit reading \"created by caffeine ai\" is replaced with the exact text: \"created by Luna\".",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/steps/LandingStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-reflect-the-requested-website-name-kbk-tc-com-in-user-visible-and-browser-metadata-set-the-app-site-title-to-kbk-tc-com-and-display-kbk-tc-com-somewhere-in-the-ui-e-g-small-header-brand-label",
+      "featureTitle": "Reflect the requested website name \"KBK&TC.com\" in user-visible and browser metadata: set the app/site title to \"KBK&TC.com\" and display \"KBK&TC.com\" somewhere in the UI (e.g., small header/brand label).",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-cohesive-romantic-visual-theme-not-blue-purple-use-a-warm-palette-e-g-blush-pink-cream-soft-red-accents-gentle-typography-and-consistent-button-styling-heart-motif-across-landing-quiz-game-and-final-message-sections",
+      "featureTitle": "Apply a cohesive romantic visual theme (not blue/purple): use a warm palette (e.g., blush pink, cream, soft red accents), gentle typography, and consistent button styling (heart motif) across Landing, Quiz, Game, and Final Message sections.",
+      "files": [
+        "frontend/src/components/HeartButton.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-and-use-generated-static-image-assets-placed-under-frontend-public-assets-generated-for-a-chibi-dino-holding-a-heart-a-small-heart-ui-icon-and-a-cherry-blossom-petal-sprite-used-for-the-petal-overlay-animation",
+      "featureTitle": "Add and use generated static image assets (placed under frontend/public/assets/generated) for: a chibi dino holding a heart, a small heart UI icon, and a cherry blossom petal sprite used for the petal overlay animation.",
+      "files": [
+        "frontend/src/components/HeartButton.tsx",
+        "frontend/src/components/PetalOverlay.tsx",
+        "frontend/src/steps/GameIntroStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

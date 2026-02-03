@@ -1,0 +1,328 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "KBK&TC.com romantic multi-step flow (quiz + tapping mini-game + anniversary message)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement a multi-step single-page flow: Landing → Yes/No Quiz → Game Intro → 15s Tapping Game → Final Message reveal; progress via buttons with no reload and reset to Landing on refresh.",
+      "acceptanceCriteria": [
+        "Opening the app shows the Landing page first",
+        "User can progress through the flow forward via buttons without page reloads",
+        "There is a clear way to proceed from Landing -> Quiz -> Game Intro -> Game -> Final Message",
+        "State resets correctly if user refreshes the page (starts at Landing)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the single-page step controller (state machine) that renders the required sections in order and advances only via in-app buttons (no route changes). Include a top-level brand label and footer credit container."
+        },
+        {
+          "path": "frontend/src/steps/LandingStep.tsx",
+          "operation": "create",
+          "description": "Create the Landing step component and expose an onNext handler to advance into the quiz."
+        },
+        {
+          "path": "frontend/src/steps/QuizStep.tsx",
+          "operation": "create",
+          "description": "Create the quiz step component (one question at a time), emitting a completion callback to enable moving to the game section."
+        },
+        {
+          "path": "frontend/src/steps/GameIntroStep.tsx",
+          "operation": "create",
+          "description": "Create the game intro step component with the Game reveal flow and Start Game action to enter the tapping game."
+        },
+        {
+          "path": "frontend/src/steps/TappingGameStep.tsx",
+          "operation": "create",
+          "description": "Create the tapping game step component (15 seconds, 50 taps goal) and completion callback to proceed to the final message section."
+        },
+        {
+          "path": "frontend/src/steps/FinalMessageStep.tsx",
+          "operation": "create",
+          "description": "Create the final message step component with a heart button that reveals the full anniversary message content."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Build the Landing page with exact heading and intro text, show the couple image, and use a heart-shaped button to begin the quiz.",
+      "acceptanceCriteria": [
+        "The heading matches the requested wording exactly",
+        "IMG-20250222-WA0001.jpg is visible on the Landing page",
+        "The intro sentence matches the requested wording exactly",
+        "Clicking the heart button moves the user to the first quiz question"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/IMG-20250222-WA0001.jpg",
+          "operation": "create",
+          "description": "Add the uploaded couple photo into the frontend public assets so it can be displayed on the Landing step."
+        },
+        {
+          "path": "frontend/src/steps/LandingStep.tsx",
+          "operation": "modify",
+          "description": "Render the exact heading text \"For my Love of my life Khambor B Kharjana\", display the couple image from frontend/public/assets/IMG-20250222-WA0001.jpg, show the exact intro sentence below it, and include a heart-shaped CTA that triggers the parent to start the quiz."
+        },
+        {
+          "path": "frontend/src/components/HeartButton.tsx",
+          "operation": "create",
+          "description": "Create a reusable heart-styled button component used to start the quiz (and later steps). If using shadcn-ui Button for base behavior, verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement a 6–7 question Yes/No quiz shown one at a time with exact first two question/response strings; show response after answering and allow continuing to next; provide continue-to-game after last question.",
+      "acceptanceCriteria": [
+        "Quiz shows exactly two options per question: Yes/No",
+        "Question 1 text: \"do you love me\"; Yes response: \"that's my man 💖\"; No response: \" no ?? you are stuck with me the rest of my life ❤️ accept it \"",
+        "Question 2 text: \"Will you still love me if I was a worm?\"; Yes response: \"you know I'll never get bored of asking this question\"; No response: \"it's doesn't matter im still in love with you \"",
+        "Quiz includes a total of 6 or 7 questions (including the two specified)",
+        "After answering a question, the user sees the response message before moving forward",
+        "After the last question, the UI provides a button to continue to the game section"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/steps/QuizStep.tsx",
+          "operation": "modify",
+          "description": "Define the quiz question list with exactly 6 or 7 total items, including the first two required questions and their exact Yes/No response strings. Implement one-at-a-time presentation with only two answer buttons (\"Yes\"/\"No\"), show the response message after selection, and provide a Next/Continue control that moves to the next question or finishes the quiz."
+        },
+        {
+          "path": "frontend/src/components/YesNoButtons.tsx",
+          "operation": "create",
+          "description": "Create a small UI component that renders the two required answer buttons (\"Yes\" and \"No\") with consistent styling across the quiz. If using shadcn-ui for base buttons, verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the quiz completion callback to reveal the post-quiz Game button/section next (no additional routes)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "After the quiz, show a \"Game\" button that reveals an animated chibi dino holding a heart, display exact intro dialogue, and provide a Start button to begin the 15-second tapping game.",
+      "acceptanceCriteria": [
+        "A \"Game\" button is shown after the quiz is completed",
+        "Clicking \"Game\" shows the chibi dino holding a heart with a simple animation (e.g., bobbing)",
+        "The intro dialogue matches the requested wording exactly",
+        "A Start button begins the 15-second tapping challenge"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/steps/GameIntroStep.tsx",
+          "operation": "modify",
+          "description": "Implement the post-quiz \"Game\" button that reveals the chibi dino image and shows the exact dialogue: \"Hi my name is Luna as you know me hehehe so in this game u have tap 50 times in 15 second if you can do that you'll get this heart that I'm holding if you can't I'll cry\". Add a Start button that triggers entry into the tapping game."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add CSS keyframes/utility classes needed for a simple looping dino animation (e.g., bobbing) used in the Game Intro reveal."
+        },
+        {
+          "path": "frontend/src/steps/TappingGameStep.tsx",
+          "operation": "modify",
+          "description": "Accept a start signal from GameIntroStep and begin the countdown/tapping challenge immediately when the Start button is clicked."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Implement the 15-second tapping mini-game with 50 taps goal, multi-touch friendly tapping area, countdown timer, tap counter, and clear success/failure with a proceed button after game ends.",
+      "acceptanceCriteria": [
+        "Timer starts at 15 seconds when the game starts and counts down to 0",
+        "Tap count increments on each tap/click in the tapping area",
+        "User can reach the goal using rapid taps and multi-touch on mobile devices",
+        "If the user reaches 50 taps before time ends, show a success state immediately",
+        "If time reaches 0 before 50 taps, show a failure state",
+        "After the game ends (success or failure), show a button to proceed to the final heart message section"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useTappingGame.ts",
+          "operation": "create",
+          "description": "Create a reusable hook to manage the tapping game lifecycle (start/reset, countdown timing, tap count, early success, time-out failure) and expose state for UI rendering."
+        },
+        {
+          "path": "frontend/src/steps/TappingGameStep.tsx",
+          "operation": "modify",
+          "description": "Implement the tapping area using pointer/touch handlers that count each touch/click event (including multi-touch). Render visible countdown timer and tap counter. Stop the game immediately on reaching 50 taps or when timer hits 0, show success/failure result, and render a continue button to proceed to the final message section."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the tapping game completion action (success or failure) to advance to the final heart message step."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add per-tap floating feedback messages (including the five exact strings), cute tap effects, and an animated cherry-blossom petal overlay during active gameplay that stops when the game ends.",
+      "acceptanceCriteria": [
+        "Each tap triggers a visible short-lived floating text message",
+        "The feedback pool includes the five specified messages exactly as written",
+        "There is an obvious cute tap effect (e.g., popping heart/sparkle) per tap",
+        "Cherry blossom petals animate/float across the screen during active gameplay",
+        "Effects stop/settle when the game ends"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/FloatingTapFeedback.tsx",
+          "operation": "create",
+          "description": "Create a component that spawns short-lived floating text elements at/near the tap location, selecting messages from a pool that includes exactly: \"i ❤️ u\", \"you can do it\", \"you almost there\", \"you did well\", \"proud of you\"."
+        },
+        {
+          "path": "frontend/src/components/PetalOverlay.tsx",
+          "operation": "create",
+          "description": "Create a gameplay-only overlay that animates multiple cherry blossom petals across the screen using the sprite at frontend/public/assets/generated/cherry-blossom-petal.dim_256x256.png."
+        },
+        {
+          "path": "frontend/src/steps/TappingGameStep.tsx",
+          "operation": "modify",
+          "description": "On each tap, trigger FloatingTapFeedback and a cute pop effect (heart/sparkle). While the game is active, render PetalOverlay; ensure both the overlay and tap effects stop/spawn no new items after the game ends."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add CSS animations for floating text, heart/sparkle pop effects, and petal drifting (using the generated petal sprite)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "After the game ends, show a heart button that reveals the full anniversary message exactly as provided; ensure message is readable and scrollable on mobile/desktop.",
+      "acceptanceCriteria": [
+        "A heart button is shown after the game result screen",
+        "Clicking the heart button reveals the full message text exactly as provided (including punctuation and emojis)",
+        "The message is readable on mobile and desktop (scrollable if needed)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/steps/FinalMessageStep.tsx",
+          "operation": "modify",
+          "description": "Implement a heart button that reveals the full multi-paragraph anniversary message text exactly as provided in the BuildRequest (starting with \"Happy 21❤️ Month Anniversary, my love 🤍\"), with a scrollable container for long content."
+        },
+        {
+          "path": "frontend/src/components/HeartButton.tsx",
+          "operation": "modify",
+          "description": "Ensure HeartButton supports the final reveal interaction and can optionally display the heart icon from frontend/public/assets/generated/heart-button-icon.dim_512x512.png. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/steps/TappingGameStep.tsx",
+          "operation": "modify",
+          "description": "After success/failure, render a heart-themed proceed control that advances into the final message step."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Replace any visible credit text \"created by caffeine ai\" with the exact text \"created by Luna\" and ensure the credit is visible on the site.",
+      "acceptanceCriteria": [
+        "No visible text on the site says \"created by caffeine ai\"",
+        "A visible credit line reads exactly \"created by Luna\""
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add/adjust a visible footer credit line so it reads exactly \"created by Luna\" and ensure no other rendered UI includes the string \"created by caffeine ai\"."
+        },
+        {
+          "path": "frontend/src/steps/LandingStep.tsx",
+          "operation": "modify",
+          "description": "Confirm Landing does not include any legacy credit text and relies on the shared footer credit instead."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Reflect the website name \"KBK&TC.com\" in browser title and UI brand label.",
+      "acceptanceCriteria": [
+        "Browser tab title is \"KBK&TC.com\"",
+        "The UI displays \"KBK&TC.com\" as a brand label somewhere on the page"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Ensure the document title is set to exactly \"KBK&TC.com\" (HTML title tag)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Render a small, consistent UI brand label showing exactly \"KBK&TC.com\" (e.g., in a top bar within the single-page layout)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Apply a cohesive warm romantic theme (not blue/purple) with consistent typography and heart-motif button styling across all steps.",
+      "acceptanceCriteria": [
+        "All screens share consistent colors, typography, spacing, and button styles",
+        "Primary call-to-action buttons are visually heart-themed",
+        "Theme does not primarily use blue/purple"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define global theme tokens and base styles (warm palette like blush pink/cream/soft red accents), consistent typography, and shared component styling hooks for buttons and sections."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust/extend Tailwind theme configuration as needed to support the warm romantic palette and consistent spacing/typography utilities."
+        },
+        {
+          "path": "frontend/src/components/HeartButton.tsx",
+          "operation": "modify",
+          "description": "Standardize the primary CTA look (heart motif) so it is reused across Landing, Quiz navigation, Game intro, and Final reveal. If leveraging shadcn-ui Button as the base, verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add generated static assets for the chibi dino, heart icon, and cherry blossom petal sprite and wire them into the UI (dino in intro, heart icon for buttons, petal sprite for overlay).",
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated",
+        "The chibi dino image is used in the game intro section",
+        "The heart icon is used for at least one heart button",
+        "The petal sprite is used for the animated petal overlay in the tapping game"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/luna-chibi-dino-heart.dim_1024x1024.png",
+          "operation": "create",
+          "description": "Add the generated chibi dino holding a heart asset to the required location under frontend/public/assets/generated."
+        },
+        {
+          "path": "frontend/public/assets/generated/heart-button-icon.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated heart icon asset to the required location under frontend/public/assets/generated."
+        },
+        {
+          "path": "frontend/public/assets/generated/cherry-blossom-petal.dim_256x256.png",
+          "operation": "create",
+          "description": "Add the generated cherry blossom petal sprite to the required location under frontend/public/assets/generated."
+        },
+        {
+          "path": "frontend/src/steps/GameIntroStep.tsx",
+          "operation": "modify",
+          "description": "Use the generated dino image at frontend/public/assets/generated/luna-chibi-dino-heart.dim_1024x1024.png in the game intro reveal UI."
+        },
+        {
+          "path": "frontend/src/components/HeartButton.tsx",
+          "operation": "modify",
+          "description": "Use the generated heart icon at frontend/public/assets/generated/heart-button-icon.dim_512x512.png for at least one heart button instance. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/PetalOverlay.tsx",
+          "operation": "modify",
+          "description": "Render drifting petals using frontend/public/assets/generated/cherry-blossom-petal.dim_256x256.png as the sprite source for the gameplay overlay animation."
+        }
+      ]
+    }
+  ]
+}

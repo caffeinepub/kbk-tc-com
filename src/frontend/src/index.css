@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1rem;
+        --background: 0.99 0.02 15;
+        --foreground: 0.25 0.08 15;
+        --card: 1 0.01 15;
+        --card-foreground: 0.25 0.08 15;
+        --popover: 1 0.01 15;
+        --popover-foreground: 0.25 0.08 15;
+        --primary: 0.58 0.18 15;
+        --primary-foreground: 0.99 0.01 15;
+        --secondary: 0.96 0.02 15;
+        --secondary-foreground: 0.25 0.08 15;
+        --muted: 0.96 0.02 15;
+        --muted-foreground: 0.55 0.05 15;
+        --accent: 0.96 0.02 15;
+        --accent-foreground: 0.25 0.08 15;
+        --destructive: 0.58 0.22 25;
+        --destructive-foreground: 0.99 0.01 15;
+        --border: 0.92 0.02 15;
+        --input: 0.92 0.02 15;
+        --ring: 0.58 0.18 15;
+        --chart-1: 0.65 0.18 15;
+        --chart-2: 0.70 0.15 340;
+        --chart-3: 0.75 0.12 30;
+        --chart-4: 0.60 0.20 350;
+        --chart-5: 0.68 0.16 10;
+    }
+
+    .dark {
+        --background: 0.15 0.05 15;
+        --foreground: 0.98 0.01 15;
+        --card: 0.20 0.06 15;
+        --card-foreground: 0.98 0.01 15;
+        --popover: 0.18 0.06 15;
+        --popover-foreground: 0.98 0.01 15;
+        --primary: 0.75 0.15 15;
+        --primary-foreground: 0.15 0.05 15;
+        --secondary: 0.25 0.06 15;
+        --secondary-foreground: 0.98 0.01 15;
+        --muted: 0.25 0.06 15;
+        --muted-foreground: 0.65 0.04 15;
+        --accent: 0.30 0.07 15;
+        --accent-foreground: 0.98 0.01 15;
+        --destructive: 0.65 0.20 25;
+        --destructive-foreground: 0.15 0.05 15;
+        --border: 0.30 0.05 15;
+        --input: 0.30 0.05 15;
+        --ring: 0.65 0.12 15;
+        --chart-1: 0.55 0.20 340;
+        --chart-2: 0.70 0.15 15;
+        --chart-3: 0.75 0.12 30;
+        --chart-4: 0.60 0.18 350;
+        --chart-5: 0.68 0.16 10;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    }
+}
+
+@layer utilities {
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes bounce-slow {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    @keyframes heartbeat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        25% {
+            transform: scale(1.1);
+        }
+        50% {
+            transform: scale(1);
+        }
+        75% {
+            transform: scale(1.05);
+        }
+    }
+
+    @keyframes tap-effect {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(2);
+            opacity: 0;
+        }
+    }
+
+    @keyframes float-up {
+        0% {
+            transform: translate(-50%, -50%) translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-50%, -50%) translateY(-100px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes petal-fall {
+        0% {
+            transform: translateY(-100px) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.7;
+        }
+        90% {
+            opacity: 0.7;
+        }
+        100% {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .animate-fade-in {
+        animation: fade-in 0.6s ease-out;
+    }
+
+    .animate-bounce-slow {
+        animation: bounce-slow 2s ease-in-out infinite;
+    }
+
+    .animate-heartbeat {
+        animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    .animate-tap-effect {
+        animation: tap-effect 0.6s ease-out forwards;
+    }
+
+    .animate-float-up {
+        animation: float-up 1.5s ease-out forwards;
+    }
+
+    .animate-petal-fall {
+        animation: petal-fall linear infinite;
+    }
+
+    .animation-delay-200 {
+        animation-delay: 0.2s;
+    }
+
+    .animation-delay-400 {
+        animation-delay: 0.4s;
+    }
+}

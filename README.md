@@ -1,2 +1,3 @@
-# kbk-tc-com
-Exported from Caffeine project: KBK&amp;TC.com
+## KBK&amp;TC.com
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

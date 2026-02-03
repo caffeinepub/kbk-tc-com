@@ -1,0 +1,17 @@
+{
+  "frontend/src/App.tsx": "Main application component managing the step-based flow (landing, quiz, game intro, tapping game, final message) with brand header and footer credit.",
+  "frontend/src/steps/LandingStep.tsx": "Landing page displaying the couple photo, romantic heading, intro text, and heart button to start the quiz.",
+  "frontend/src/steps/QuizStep.tsx": "Interactive yes/no questionnaire with 7 questions, progress tracking, and custom branching responses for each answer.",
+  "frontend/src/steps/GameIntroStep.tsx": "Game introduction screen revealing Luna the chibi dino with animated entrance and game instructions.",
+  "frontend/src/steps/TappingGameStep.tsx": "15-second tapping mini-game with multi-touch support, countdown timer, tap counter, floating feedback messages, cherry blossom petals, and success/failure states (fixed array initialization syntax error).",
+  "frontend/src/steps/FinalMessageStep.tsx": "Final anniversary message reveal with heart button trigger and scrollable message content.",
+  "frontend/src/components/HeartButton.tsx": "Reusable heart-themed button component with gradient styling and hover effects (removed unnecessary transform class for Tailwind v3 compatibility).",
+  "frontend/src/components/YesNoButtons.tsx": "Yes/No answer buttons for the quiz with distinct green and rose color schemes (removed unnecessary transform classes for Tailwind v3 compatibility).",
+  "frontend/src/components/FloatingTapFeedback.tsx": "Floating text feedback component that appears at tap locations with encouraging messages.",
+  "frontend/src/components/PetalOverlay.tsx": "Animated cherry blossom petal overlay that creates falling petals during the tapping game.",
+  "frontend/src/hooks/useTappingGame.ts": "Custom hook managing tapping game state including tap count, timer, success/failure conditions, and game lifecycle.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file for backend queries (none needed for this application).",
+  "frontend/src/lib/utils.ts": "Utility function for merging Tailwind CSS classes using clsx and tailwind-merge.",
+  "frontend/src/index.css": "Global styles with warm romantic OKLCH color palette (rose/pink/red tones), custom animations for fading, bouncing, heartbeat, tap effects, and petal falling.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended color tokens, border radius, and Inter font family."
+}

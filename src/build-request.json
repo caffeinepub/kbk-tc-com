@@ -1,0 +1,237 @@
+{
+  "kind": "build_request",
+  "title": "Romantic multi-step website for Khambor B Kharjana with quiz, tapping mini-game, and anniversary message",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a multi-step single-page website flow with these sections in order: (1) Landing page, (2) Yes/No quiz (6–7 questions), (3) Mini-game intro with character, (4) 15-second tapping mini-game (50 taps goal), (5) Final heart button reveal with the full anniversary message.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "the first page Will Be our picture given also written below ... When he clicks the button some questions will be there ... After that There will be a game button ... And lastly after the game is done there will be another button of a heart when he click that the message will appear"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Opening the app shows the Landing page first",
+        "User can progress through the flow forward via buttons without page reloads",
+        "There is a clear way to proceed from Landing -> Quiz -> Game Intro -> Game -> Final Message",
+        "State resets correctly if user refreshes the page (starts at Landing)"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the Landing page with: (a) heading text exactly: \"For my Love of my life Khambor B Kharjana\", (b) display the uploaded couple image (IMG-20250222-WA0001.jpg), (c) show this exact text below the image: \"I love you and will always Love you please click this heart button so that you can answer some questions\", and (d) a heart-shaped button to begin the quiz.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "named For  my Love of my life Khambor B Kharjana as an heading",
+          "the first page Will Be our picture given also written below \"I love you and will always Love you please click this heart button so that you can answer  some  questions\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "The heading matches the requested wording exactly",
+        "IMG-20250222-WA0001.jpg is visible on the Landing page",
+        "The intro sentence matches the requested wording exactly",
+        "Clicking the heart button moves the user to the first quiz question"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build a Yes/No quiz containing 6–7 total questions, presented one at a time with two buttons: \"Yes\" and \"No\". The first two questions and their responses must exactly match the user-provided text. After each answer, show the corresponding response message and allow proceeding to the next question.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "some questions will be there like \"do you love me\" ... if he clicks no it's response \" no ?? you are stuck with me the rest of my life ❤️ accept it \" if yes then \"that's my man 💖\"",
+          "also like \"Will you still love me if I was a worm?\" if he click yes \"you know I'll never get bored of asking this question and if he clicks no than \"it's doesn't matter im still in love with you \"",
+          "and after 6 to 7 question ."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Quiz shows exactly two options per question: Yes/No",
+        "Question 1 text: \"do you love me\"; Yes response: \"that's my man 💖\"; No response: \" no ?? you are stuck with me the rest of my life ❤️ accept it \"",
+        "Question 2 text: \"Will you still love me if I was a worm?\"; Yes response: \"you know I'll never get bored of asking this question\"; No response: \"it's doesn't matter im still in love with you \"",
+        "Quiz includes a total of 6 or 7 questions (including the two specified)",
+        "After answering a question, the user sees the response message before moving forward",
+        "After the last question, the UI provides a button to continue to the game section"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "After the quiz, add a \"Game\" button that reveals an animated, cute chibi dinosaur character holding a heart. Display the character intro dialogue as text exactly: \"Hi my name is Luna as you know me hehehe so in this game u have tap 50 times in 15 second if you can do that you'll get this heart that I'm holding if you can't I'll cry\" and provide a button to start the game.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "After that There will be a game button if he clicks an animated chibi  cute dino holding a heart appears ... saying \"Hi my name is Luna as you know me  hehehe so in this game u have tap 50 times in 15 second if you can do that you'll get this heart that I'm holding if you can't I'll cry \""
+        ]
+      },
+      "acceptanceCriteria": [
+        "A \"Game\" button is shown after the quiz is completed",
+        "Clicking \"Game\" shows the chibi dino holding a heart with a simple animation (e.g., bobbing)",
+        "The intro dialogue matches the requested wording exactly",
+        "A Start button begins the 15-second tapping challenge"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement the tapping mini-game: user must register 50 taps within 15 seconds. The tapping area must support multi-finger input (i.e., multiple rapid taps on touchscreens). Show a visible countdown timer, tap counter, and clear success/failure result when time ends or goal is reached.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "in this game u have tap 50 times in 15 second",
+          "he can even use many fingers for tapping",
+          "but he have to finish in 15 seconds"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Timer starts at 15 seconds when the game starts and counts down to 0",
+        "Tap count increments on each tap/click in the tapping area",
+        "User can reach the goal using rapid taps and multi-touch on mobile devices",
+        "If the user reaches 50 taps before time ends, show a success state immediately",
+        "If time reaches 0 before 50 taps, show a failure state",
+        "After the game ends (success or failure), show a button to proceed to the final heart message section"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "During the tapping game, on each tap, show a short floating feedback message chosen from a pool that includes at least these exact strings: \"i ❤️ u\", \"you can do it\", \"you almost there\", \"you did well\", \"proud of you\". Add cute visual effects (e.g., small sparkles/heart pop) and a cherry-blossom petal overlay animation across the screen while the game is active.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "each tapping gives a message \"i  ❤️ u\" ,\" you can do it \", \"you almost there \", \"you did well\"  ,\"proud of you\" and many cute messages with cute effects and beautiful petals of cherry blossoms on the screen"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each tap triggers a visible short-lived floating text message",
+        "The feedback pool includes the five specified messages exactly as written",
+        "There is an obvious cute tap effect (e.g., popping heart/sparkle) per tap",
+        "Cherry blossom petals animate/float across the screen during active gameplay",
+        "Effects stop/settle when the game ends"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "After the game ends, show a heart button that reveals the full anniversary message. The revealed content must exactly match the user-provided text starting with: \"Happy 21❤️ Month Anniversary, my love 🤍\" and including the full multi-paragraph message as provided.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "after the game is done there will be another button of a heart when he click that the message will appear wishing him \"Happy 21❤️ Month Anniversary, my love 🤍\n\nTwenty one months with you feels like a beautiful journey written by God Himself. ... Here’s to us, to love rooted in faith, and to many more months and years together 🤍🙏✨\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "A heart button is shown after the game result screen",
+        "Clicking the heart button reveals the full message text exactly as provided (including punctuation and emojis)",
+        "The message is readable on mobile and desktop (scrollable if needed)"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Update branding text across the site so any credit reading \"created by caffeine ai\" is replaced with the exact text: \"created by Luna\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Also instead of showing created by caffeine ai Replace it with created by Luna."
+        ]
+      },
+      "acceptanceCriteria": [
+        "No visible text on the site says \"created by caffeine ai\"",
+        "A visible credit line reads exactly \"created by Luna\""
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Reflect the requested website name \"KBK&TC.com\" in user-visible and browser metadata: set the app/site title to \"KBK&TC.com\" and display \"KBK&TC.com\" somewhere in the UI (e.g., small header/brand label).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The website url name should be KBK&TC.com"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Browser tab title is \"KBK&TC.com\"",
+        "The UI displays \"KBK&TC.com\" as a brand label somewhere on the page"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Apply a cohesive romantic visual theme (not blue/purple): use a warm palette (e.g., blush pink, cream, soft red accents), gentle typography, and consistent button styling (heart motif) across Landing, Quiz, Game, and Final Message sections.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All screens share consistent colors, typography, spacing, and button styles",
+        "Primary call-to-action buttons are visually heart-themed",
+        "Theme does not primarily use blue/purple"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Add and use generated static image assets (placed under frontend/public/assets/generated) for: a chibi dino holding a heart, a small heart UI icon, and a cherry blossom petal sprite used for the petal overlay animation.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "animated chibi  cute dino holding a heart",
+          "beautiful petals of cherry blossoms"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated",
+        "The chibi dino image is used in the game intro section",
+        "The heart icon is used for at least one heart button",
+        "The petal sprite is used for the animated petal overlay in the tapping game"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text in the build request.",
+    "Frontend files under the immutable paths in SYSTEM_CONTEXT must not be edited; compose them from elsewhere if needed.",
+    "No third-party auth providers; only Internet Identity is available (not required for this app).",
+    "Single-backend-actor architecture; backend changes are not required unless explicitly needed."
+  ],
+  "nonGoals": [
+    "Implementing real domain/DNS hosting for KBK&TC.com (only reflect the name in UI/metadata within the app).",
+    "User accounts, login, or saving quiz/game results to the backend.",
+    "Real-time multiplayer or online leaderboards."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Chibi cute dinosaur holding a heart, pastel style, transparent background (luna-chibi-dino-heart.dim_1024x1024.png)",
+      "Simple glossy heart icon/button graphic, transparent background (heart-button-icon.dim_512x512.png)",
+      "Single cherry blossom petal sprite, soft pink, transparent background (cherry-blossom-petal.dim_256x256.png)"
+    ],
+    "edits": []
+  }
+}
